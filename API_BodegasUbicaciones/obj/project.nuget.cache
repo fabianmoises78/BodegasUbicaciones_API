@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XQcOnJ7eMTzGZFANz8iIlFeIJki4a6UP74/xyCzoyuPhxocH4FXLhSfL/McHVA9YO/g5e4ei5dW8jlFkMYC7Ew==",
+  "dgSpecHash": "87LBflWaWG1eRPSVTNjHbBJECMkj6Pr3snAgu1uVzuJTswV31RiCxewHFUMQhw2/r2MVxWnC7/puez1mRqBgtA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\moise\\source\\repos\\API_BodegasUbicaciones\\API_BodegasUbicaciones\\API_BodegasUbicaciones.csproj",
+  "projectFilePath": "C:\\Users\\moise\\Documents\\API_BodegasUbicaciones\\BodegasUbicaciones_API\\API_BodegasUbicaciones\\API_BodegasUbicaciones.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\moise\\.nuget\\packages\\efcore.bulkextensions\\3.1.0\\efcore.bulkextensions.3.1.0.nupkg.sha512",
     "C:\\Users\\moise\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",

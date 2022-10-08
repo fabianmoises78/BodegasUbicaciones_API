@@ -1,11 +1,27 @@
 ﻿using API_BodegasUbicaciones.BL.DAO;
 using API_BodegasUbicaciones.BL.Models;
+using API_BodegasUbicaciones.DAL;
+using API_BodegasUbicaciones.DTO;
+using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace API_BodegasUbicaciones.BL.Implements
 {
     public class DetalleDocumentoEntradaImplement : DetalleDocumentoEntradaDAO
     {
+        private readonly ApplicationDBContext context;
+        private readonly IConfiguration configuration;
+        private readonly string _connectionString;
+
+        public DetalleDocumentoEntradaImplement(ApplicationDBContext context, IConfiguration IConfig)
+        {
+            this.context = context;
+            this.configuration = IConfig;
+            _connectionString = IConfig.GetConnectionString("GESTIONUBICACIONES");
+        }
+
         public int ActivarDetDocEntrada(DETALLEDOCUMENTOENTRADA entity)
         {
             throw new System.NotImplementedException();
@@ -18,12 +34,58 @@ namespace API_BodegasUbicaciones.BL.Implements
 
         public int create(DETALLEDOCUMENTOENTRADA entity)
         {
-            throw new System.NotImplementedException();
+            GenericDTO response = new GenericDTO();
+
+            try
+            {
+                using (SqlConnection sql = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("DET_DOC_ENTRADA_INS", sql))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        SqlParameter sqlparameter1 = cmd.Parameters.Add(new SqlParameter("@DCME_ID", entity.DCME_ID));
+                        SqlParameter sqlparameter2 = cmd.Parameters.Add(new SqlParameter("@PRD_ID", entity.PRD_ID));
+                        SqlParameter sqlparameter3 = cmd.Parameters.Add(new SqlParameter("@DTDE_CANTIDAD", entity.DTDE_CANTIDAD));
+                        SqlParameter sqlparameter4 = cmd.Parameters.Add(new SqlParameter("@DTDE_PRECIOUNITARIO", entity.DTDE_PRECIOUNITARIO));
+                        SqlParameter sqlparameter5 = cmd.Parameters.Add(new SqlParameter("@DTDE_DESCUENTO", entity.DTDE_DESCUENTO));
+                        sql.Open();
+                        cmd.ExecuteReader();
+                        sql.Close();
+                    }
+                }
+                return response.Status = 1;
+            }
+            catch (Exception)
+            {
+                return response.Status = 0;
+            }
         }
 
         public int delete(DETALLEDOCUMENTOENTRADA entity)
         {
-            throw new System.NotImplementedException();
+
+            GenericDTO response = new GenericDTO();
+
+            try
+            {
+                using (SqlConnection sql = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("DET_DOC_ENTRADA_DEL", sql))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        SqlParameter sqlparameter = cmd.Parameters.Add(new SqlParameter("@DTDE_ID", entity.DTDE_ID));
+
+                        sql.Open();
+                        cmd.ExecuteReader();
+                        sql.Close();
+                    }
+                }
+                return response.Status = 1;
+            }
+            catch (Exception)
+            {
+                return response.Status = 0;
+            }
         }
 
         public int DesactivarDetDocEntrada(DETALLEDOCUMENTOENTRADA entity)
@@ -43,7 +105,32 @@ namespace API_BodegasUbicaciones.BL.Implements
 
         public int update(DETALLEDOCUMENTOENTRADA entity)
         {
-            throw new System.NotImplementedException();
+            GenericDTO responde = new GenericDTO();
+
+            try
+            {
+                using (SqlConnection sql = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("DET_DOC_ENTRADA_UPD", sql))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        SqlParameter sqlparameter1 = cmd.Parameters.Add(new SqlParameter("@DCME_ID", entity.DCME_ID));
+                        SqlParameter sqlparameter2 = cmd.Parameters.Add(new SqlParameter("@DTDE_ID", entity.DTDE_ID));
+                        SqlParameter sqlparameter3 = cmd.Parameters.Add(new SqlParameter("@PRD_ID", entity.PRD_ID));
+                        SqlParameter sqlparameter4 = cmd.Parameters.Add(new SqlParameter("@DTDE_CANTIDAD", entity.DTDE_CANTIDAD));
+                        SqlParameter sqlparameter5 = cmd.Parameters.Add(new SqlParameter("@DTDE_PRECIOUNITARIO", entity.DTDE_PRECIOUNITARIO));
+                        SqlParameter sqlparameter6 = cmd.Parameters.Add(new SqlParameter("@DTDE_DESCUENTO", entity.DTDE_DESCUENTO));
+                        sql.Open();
+                        cmd.ExecuteReader();
+                        sql.Close();
+                    }
+                }
+                return responde.Status = 1;
+            }
+            catch (Exception)
+            {
+                return responde.Status = 0;
+            }
         }
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\moise\\source\\repos\\API_BodegasUbicaciones\\API_BodegasUbicaciones\\API_BodegasUbicaciones.csproj": {}
+    "C:\\Users\\moise\\Documents\\API_BodegasUbicaciones\\BodegasUbicaciones_API\\API_BodegasUbicaciones\\API_BodegasUbicaciones.csproj": {}
   },
   "projects": {
-    "C:\\Users\\moise\\source\\repos\\API_BodegasUbicaciones\\API_BodegasUbicaciones\\API_BodegasUbicaciones.csproj": {
+    "C:\\Users\\moise\\Documents\\API_BodegasUbicaciones\\BodegasUbicaciones_API\\API_BodegasUbicaciones\\API_BodegasUbicaciones.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\moise\\source\\repos\\API_BodegasUbicaciones\\API_BodegasUbicaciones\\API_BodegasUbicaciones.csproj",
+        "projectUniqueName": "C:\\Users\\moise\\Documents\\API_BodegasUbicaciones\\BodegasUbicaciones_API\\API_BodegasUbicaciones\\API_BodegasUbicaciones.csproj",
         "projectName": "API_BodegasUbicaciones",
-        "projectPath": "C:\\Users\\moise\\source\\repos\\API_BodegasUbicaciones\\API_BodegasUbicaciones\\API_BodegasUbicaciones.csproj",
+        "projectPath": "C:\\Users\\moise\\Documents\\API_BodegasUbicaciones\\BodegasUbicaciones_API\\API_BodegasUbicaciones\\API_BodegasUbicaciones.csproj",
         "packagesPath": "C:\\Users\\moise\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\moise\\source\\repos\\API_BodegasUbicaciones\\API_BodegasUbicaciones\\obj\\",
+        "outputPath": "C:\\Users\\moise\\Documents\\API_BodegasUbicaciones\\BodegasUbicaciones_API\\API_BodegasUbicaciones\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\moise\\AppData\\Roaming\\NuGet\\NuGet.Config",

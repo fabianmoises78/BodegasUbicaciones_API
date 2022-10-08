@@ -11,5 +11,6 @@ namespace API_BodegasUbicaciones.BL.Models
         public int? MUN_ID { get; set; }
         public string UBI_DIRECCION { get; set; }
         public bool UBI_ACTIVA { get; set; }
+        public bool UBI_ESPRINCIPAL { get; set; }
     }
 }

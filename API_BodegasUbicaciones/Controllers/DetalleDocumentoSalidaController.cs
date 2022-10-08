@@ -1,4 +1,5 @@
 ﻿using API_BodegasUbicaciones.BL.DAO;
+using API_BodegasUbicaciones.BL.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API_BodegasUbicaciones.Controllers
@@ -10,6 +11,19 @@ namespace API_BodegasUbicaciones.Controllers
         public DetalleDocumentoSalidaController(DetalleDocumentoSalidaDAO _DetDocSalida)
         {
             DetDocSalida = _DetDocSalida;
+        }
+
+        public IActionResult DeleteDetDocSalida([FromBody] DETALLEDOCUMENTOSALIDA entity)
+        {
+            if(entity.DTDS_ID != 0)
+            {
+                var id = DetDocSalida.delete(entity);
+                return Ok(id);
+            }
+            else
+            {
+                return BadRequest("Error 404");
+            }
         }
     }
 }

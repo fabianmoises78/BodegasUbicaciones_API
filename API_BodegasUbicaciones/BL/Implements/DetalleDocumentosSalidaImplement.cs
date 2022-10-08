@@ -1,11 +1,27 @@
 ﻿using API_BodegasUbicaciones.BL.DAO;
 using API_BodegasUbicaciones.BL.Models;
+using API_BodegasUbicaciones.DAL;
+using API_BodegasUbicaciones.DTO;
+using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace API_BodegasUbicaciones.BL.Implements
 {
     public class DetalleDocumentosSalidaImplement : DetalleDocumentoSalidaDAO
     {
+        private readonly ApplicationDBContext context;
+        private readonly IConfiguration configuration;
+        private readonly string _connectionString;
+
+        public DetalleDocumentosSalidaImplement(ApplicationDBContext context, IConfiguration iConfig)
+        {
+            this.context = context;
+            this.configuration = iConfig;
+            _connectionString = iConfig.GetConnectionString("GESTIONUBICACIONES");
+        }
+
         public int ActivarDetDocSalida(DETALLEDOCUMENTOSALIDA entity)
         {
             throw new System.NotImplementedException();
@@ -23,7 +39,27 @@ namespace API_BodegasUbicaciones.BL.Implements
 
         public int delete(DETALLEDOCUMENTOSALIDA entity)
         {
-            throw new System.NotImplementedException();
+            GenericDTO response = new GenericDTO();
+
+            try
+            {
+                using (SqlConnection sql = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("DET_DOC_SALIDA_DEL", sql))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        SqlParameter sqlparameter1 = cmd.Parameters.Add(new SqlParameter("@DTDS_ID", entity.DTDS_ID));
+                        sql.Open();
+                        cmd.ExecuteReader();
+                        sql.Close();
+                    }
+                }
+                return response.Status = 1;
+            }
+            catch (Exception)
+            {
+                return response.Status = 0;
+            }
         }
 
         public int DesactivarDetDocSalida(DETALLEDOCUMENTOSALIDA entity)
