@@ -34,7 +34,29 @@ namespace API_BodegasUbicaciones.BL.Implements
 
         public int create(DETALLEDOCUMENTOSALIDA entity)
         {
-            throw new System.NotImplementedException();
+            GenericDTO response = new GenericDTO();
+
+            try
+            {
+                using (SqlConnection sql = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("DET_DOC_SALIDA_INS", sql))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        SqlParameter p1 = cmd.Parameters.Add(new SqlParameter("@DCMS_ID", entity.DCMS_ID));
+                        SqlParameter p2 = cmd.Parameters.Add(new SqlParameter("@PRD_ID", entity.PRD_ID));
+                        SqlParameter p3 = cmd.Parameters.Add(new SqlParameter("@DTDS_CANTIDAD", entity.DTDS_CANTIDAD));
+                        sql.Open();
+                        cmd.ExecuteReader();
+                        sql.Close();
+                    }
+                }
+                return response.Status = 1;
+            }
+            catch (Exception)
+            {
+                return response.Status = 0;
+            }
         }
 
         public int delete(DETALLEDOCUMENTOSALIDA entity)
@@ -79,7 +101,30 @@ namespace API_BodegasUbicaciones.BL.Implements
 
         public int update(DETALLEDOCUMENTOSALIDA entity)
         {
-            throw new System.NotImplementedException();
+            GenericDTO response = new GenericDTO();
+
+            try
+            {
+                using (SqlConnection sql = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("DET_DOC_SALIDA_UPD", sql))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        SqlParameter p1 = cmd.Parameters.Add(new SqlParameter("@DTDS_ID", entity.DTDS_ID));
+                        SqlParameter p2 = cmd.Parameters.Add(new SqlParameter("@DCMS_ID", entity.DCMS_ID));
+                        SqlParameter p3 = cmd.Parameters.Add(new SqlParameter("@PRD_ID", entity.PRD_ID));
+                        SqlParameter p4 = cmd.Parameters.Add(new SqlParameter("@DTDS_CANTIDAD", entity.DTDS_CANTIDAD));
+                        sql.Open();
+                        cmd.ExecuteReader();
+                        sql.Close();
+                    }
+                }
+                return response.Status = 1;
+            }
+            catch (Exception)
+            {
+                return response.Status = 0;
+            }
         }
     }
 }

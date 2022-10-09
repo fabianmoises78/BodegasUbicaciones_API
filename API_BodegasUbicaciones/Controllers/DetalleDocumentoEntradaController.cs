@@ -61,5 +61,24 @@ namespace API_BodegasUbicaciones.Controllers
                 return BadRequest("error 404");
             }
         }
+
+        /*
+            Este EndPoint recibe el ID para poder eliminar dos tablas
+            de la base de datos del contexto de Documentos de Entrada
+         */
+        [HttpPost]
+        [Route("DeleteDocEntardaAll")]
+        public IActionResult DeleteDocEntardaAll([FromBody] DETALLEDOCUMENTOENTRADA entity)
+        {
+            if (entity.DCME_ID != 0)
+            {
+                var id = DetDocEntrada.DeleteDocEntradaAll(entity);
+                return Ok(id);
+            }
+            else
+            {
+                return BadRequest("Error 404");
+            }
+        }
     }
 }

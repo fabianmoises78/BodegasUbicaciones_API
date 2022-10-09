@@ -6,7 +6,7 @@ namespace API_BodegasUbicaciones.BL.Models
     public class DOCUMENTOSALIDA
     {
         [Key]
-        public int DCMS { get; set; }
+        public int DCMS_ID { get; set; }
         public string DCMS_CODIGO { get; set; }
         public DateTime DCMS_FECHA { get; set; }
         public int EMP_ID { get; set; }

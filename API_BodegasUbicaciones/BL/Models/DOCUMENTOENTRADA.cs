@@ -6,7 +6,7 @@ namespace API_BodegasUbicaciones.BL.Models
     public class DOCUMENTOENTRADA
     {
         [Key]
-        public int DCME { get; set; }
+        public int DCME_ID { get; set; }
         public string DCME_CODIGO { get; set; }
         public DateTime DCME_FECHA { get; set; }
         public int EMP_ID { get; set; }

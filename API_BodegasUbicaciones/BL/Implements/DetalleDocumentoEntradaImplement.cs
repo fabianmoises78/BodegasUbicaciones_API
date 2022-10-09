@@ -88,6 +88,31 @@ namespace API_BodegasUbicaciones.BL.Implements
             }
         }
 
+        public int DeleteDocEntradaAll(DETALLEDOCUMENTOENTRADA entity) //Este Implement recibe un ID para borrar un registro de dos tablas en la base de datos
+        {
+            GenericDTO response = new GenericDTO();
+
+            try
+            {
+                using (SqlConnection sql = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("DOC_ENTRADA_DEL_ALL", sql))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        SqlParameter p1 = cmd.Parameters.Add(new SqlParameter("@DCME_ID", entity.DCME_ID));
+                        sql.Open();
+                        cmd.ExecuteReader();
+                        sql.Close();
+                    }
+                }
+                return response.Status = 1;
+            }
+            catch (Exception)
+            {
+                return response.Status = 0;
+            }
+        }
+
         public int DesactivarDetDocEntrada(DETALLEDOCUMENTOENTRADA entity)
         {
             throw new System.NotImplementedException();
