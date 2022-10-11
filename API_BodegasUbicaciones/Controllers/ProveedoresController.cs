@@ -73,12 +73,12 @@ namespace API_BodegasUbicaciones.Controllers
             return Ok(Id);
         }
 
-        [HttpPost]
+        /*[HttpPost]
         [Route("DesacProveedor")]
         public IActionResult DesacProveedor([FromBody] PROVEEDORES entity)
         {
             var Id = ProvDAO.DesactivarProveedor(entity);
             return Ok(Id);
-        }
+        }*/
     }
 }

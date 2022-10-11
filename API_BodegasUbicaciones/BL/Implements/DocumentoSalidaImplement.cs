@@ -33,7 +33,30 @@ namespace API_BodegasUbicaciones.BL.Implements
 
         public int create(DOCUMENTOSALIDA entity)
         {
-            throw new System.NotImplementedException();
+            GenericDTO response = new GenericDTO();
+
+            try
+            {
+                using (SqlConnection sql = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("DOC_SALIDA_INS", sql))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        SqlParameter p1 = cmd.Parameters.Add(new SqlParameter("@DCMS_CODIGO", entity.DCMS_CODIGO));
+                        SqlParameter p2 = cmd.Parameters.Add(new SqlParameter("@EMP_ID", entity.EMP_ID));
+                        SqlParameter p3 = cmd.Parameters.Add(new SqlParameter("@UBI_IDENTRADA", entity.UBI_IDENTRADA));
+                        SqlParameter p4 = cmd.Parameters.Add(new SqlParameter("@DCMS_CONCEPTO", entity.DCMS_CONCEPTO));
+                        sql.Open();
+                        cmd.ExecuteReader();
+                        sql.Close();
+                    }
+                }
+                return response.Status = 1;
+            }
+            catch (Exception)
+            {
+                return response.Status = 0;
+            }
         }
 
         public int delete(DOCUMENTOSALIDA entity)
@@ -101,7 +124,27 @@ namespace API_BodegasUbicaciones.BL.Implements
 
         public int DocSalida_Finalizar(DOCUMENTOSALIDA entity)
         {
-            throw new NotImplementedException();
+            GenericDTO response = new GenericDTO();
+
+            try
+            {
+                using (SqlConnection sql = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("DOC_SALIDA_FINALIZAR", sql))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        SqlParameter p1 = cmd.Parameters.Add(new SqlParameter("@DCMS_ID", entity.DCMS_ID));
+                        sql.Open();
+                        cmd.ExecuteReader();
+                        sql.Close();
+                    }
+                }
+                return response.Status = 1;
+            }
+            catch (Exception)
+            {
+                return response.Status = 1;
+            }
         }
 
         public List<DOCUMENTOSALIDA> GetAll()
@@ -116,7 +159,31 @@ namespace API_BodegasUbicaciones.BL.Implements
 
         public int update(DOCUMENTOSALIDA entity)
         {
-            throw new System.NotImplementedException();
+            GenericDTO response = new GenericDTO();
+
+            try
+            {
+                using (SqlConnection sql = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("DOC_SALIDA_UPD", sql))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        SqlParameter p1 = cmd.Parameters.Add(new SqlParameter("@DCMS_ID", entity.DCMS_ID));
+                        SqlParameter p2 = cmd.Parameters.Add(new SqlParameter("@DCMS_CODIGO", entity.DCMS_CODIGO));
+                        SqlParameter p3 = cmd.Parameters.Add(new SqlParameter("@EMP_ID", entity.EMP_ID));
+                        SqlParameter p4 = cmd.Parameters.Add(new SqlParameter("@UBI_IDENTRADA", entity.UBI_IDENTRADA));
+                        SqlParameter p5 = cmd.Parameters.Add(new SqlParameter("@DCMS_CONCEPTO", entity.DCMS_CONCEPTO));
+                        sql.Open();
+                        cmd.ExecuteReader();
+                        sql.Close();
+                    }
+                }
+                return response.Status = 1;
+            }
+            catch (Exception)
+            {
+                return response.Status = 0;
+            }
         }
     }
 }

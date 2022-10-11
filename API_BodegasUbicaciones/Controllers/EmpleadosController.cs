@@ -45,16 +45,31 @@ namespace API_BodegasUbicaciones.Controllers
         [Route("CreateEmpleado")]
         public IActionResult CreateEmpleado([FromBody] EMPLEADOS entity)
         {
-            var Id = EmpDAO.create(entity);
-            return Ok(Id);
+            if (entity.EMP_NOMBRES != null && entity.EMP_APELLIDOS != null && entity.EMP_TELEFONO != null)
+            {
+                var Id = EmpDAO.create(entity);
+                return Ok(Id);
+            }
+            else
+            {
+                return BadRequest("Error 404");
+            }
+            
         }
 
         [HttpPost]
         [Route("UpdateEmpleado")]
         public IActionResult UpdateEmpleado([FromBody] EMPLEADOS entity)
         {
-            var Id = EmpDAO.update(entity);
-            return Ok(Id);
+            if (entity.EMP_NOMBRES != null && entity.EMP_APELLIDOS != null && entity.EMP_TELEFONO != null)
+            {
+                var Id = EmpDAO.update(entity);
+                return Ok(Id);
+            }
+            else
+            {
+                return BadRequest("Error 404");
+            }
         }
 
         [HttpPost]
@@ -73,12 +88,13 @@ namespace API_BodegasUbicaciones.Controllers
             return Ok(Id);
         }
 
+        /*
         [HttpPost]
         [Route("DesacEmpleado")]
         public IActionResult DesacEmpleado([FromBody] EMPLEADOS entity)
         {
             var Id = EmpDAO.DesactivarEmpleado(entity);
             return Ok(Id);
-        }
+        }*/
     }
 }

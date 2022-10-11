@@ -45,16 +45,31 @@ namespace API_BodegasUbicaciones.Controllers
         [Route("CreateProductos")]
         public IActionResult CreateProductos([FromBody] PRODUCTOS entity)
         {
-            var Id = ProdDAO.create(entity);
-            return Ok(Id);
+            
+            if (entity.PRD_CODIGO != null && entity.PRD_NOMBRE != null && entity.PRD_URLIMG != null)
+            {
+                var Id = ProdDAO.create(entity);
+                return Ok(Id);
+            }
+            else
+            {
+                return BadRequest("Error 404");
+            }
         }
 
         [HttpPost]
         [Route("UpdateProducto")]
         public IActionResult UpdateProducto([FromBody] PRODUCTOS entity)
         {
-            var Id = ProdDAO.update(entity);
-            return Ok(Id);
+            if (entity.PRD_CODIGO != null && entity.PRD_NOMBRE != null && entity.PRD_URLIMG != null)
+            {
+                var Id = ProdDAO.update(entity);
+                return Ok(Id);
+            }
+            else
+            {
+                return BadRequest("Error 404");
+            }
         }
 
         [HttpPost]

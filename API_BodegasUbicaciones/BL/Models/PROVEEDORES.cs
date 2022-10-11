@@ -5,7 +5,7 @@ namespace API_BodegasUbicaciones.BL.Models
     public class PROVEEDORES
     {
         [Key]
-        public int PRV_ID { get; set; }
+        public int? PRV_ID { get; set; }
         public string PRV_CODIGO { get; set; }
         public string PRV_NOMBRE { get; set; }
         public string PRV_NIT { get; set; }

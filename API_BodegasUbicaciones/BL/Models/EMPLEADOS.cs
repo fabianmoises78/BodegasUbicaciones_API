@@ -5,7 +5,7 @@ namespace API_BodegasUbicaciones.BL.Models
     public class EMPLEADOS
     {
         [Key]
-        public int EMP_ID { get; set; }
+        public int? EMP_ID { get; set; }
         public string EMP_CODIGO { get; set; }
         public string EMP_NOMBRES { get; set; }
         public string EMP_APELLIDOS { get; set; }

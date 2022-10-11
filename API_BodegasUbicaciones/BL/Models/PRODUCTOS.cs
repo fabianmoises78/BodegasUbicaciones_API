@@ -5,7 +5,7 @@ namespace API_BodegasUbicaciones.BL.Models
     public class PRODUCTOS
     {
         [Key]
-        public int PRD_ID { get; set; }
+        public int? PRD_ID { get; set; }
         public string PRD_CODIGO { get; set; }
         public string PRD_NOMBRE { get; set; }
         public int? CTGPRD_ID { get; set; }
