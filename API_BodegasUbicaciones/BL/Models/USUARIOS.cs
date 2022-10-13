@@ -7,7 +7,7 @@ namespace API_BodegasUbicaciones.BL.Models
     public class USUARIOS
     {
         [Key]
-        public int USR_ID { get; set; }
+        public int? USR_ID { get; set; }
         public string USR_EMAIL { get; set; }
         public string USR_USRACCESO { get; set; }
         public string USR_PASSWORD { get; set; }

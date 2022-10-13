@@ -21,45 +21,24 @@ namespace API_BodegasUbicaciones.Controllers
         [Route("UpdateDetDocEntrada")]
         public IActionResult UpdateDetDocEntrada([FromBody] DETALLEDOCUMENTOENTRADA entity)
         {
-            if (entity.DCME_ID != 0 && entity.DTDE_ID != 0 && entity.PRD_ID != 0)
-            {
-                var id = DetDocEntrada.update(entity);
-                return Ok(id);
-            }
-            else
-            {
-                return BadRequest("Error 404");
-            }
+            var id = DetDocEntrada.update(entity);
+            return Ok(id);
         }
 
         [HttpPost]
         [Route("CreateDetDocEntrada")]
         public IActionResult CreateDetDocEntrada([FromBody] DETALLEDOCUMENTOENTRADA entity)
         {
-            if (entity.DCME_ID != 0 && entity.PRD_ID != 0)
-            {
-                var id = DetDocEntrada.create(entity);
-                return Ok(id);
-            }
-            else
-            {
-                return BadRequest("Error 404");
-            }
+            var id = DetDocEntrada.create(entity);
+            return Ok(id);
         }
 
         [HttpPost]
         [Route("DeleteDetDocEntrada")]
         public IActionResult DeleteDetDocEntrada([FromBody] DETALLEDOCUMENTOENTRADA entity)
         {
-            if (entity.DTDE_ID != 0)
-            {
-                var id = DetDocEntrada.delete(entity);
-                return Ok(id);
-            }
-            else
-            {
-                return BadRequest("error 404");
-            }
+            var id = DetDocEntrada.delete(entity);
+            return Ok(id);
         }
 
         /*
@@ -70,15 +49,8 @@ namespace API_BodegasUbicaciones.Controllers
         [Route("DeleteDocEntardaAll")]
         public IActionResult DeleteDocEntardaAll([FromBody] DETALLEDOCUMENTOENTRADA entity)
         {
-            if (entity.DCME_ID != 0)
-            {
-                var id = DetDocEntrada.DeleteDocEntradaAll(entity);
-                return Ok(id);
-            }
-            else
-            {
-                return BadRequest("Error 404");
-            }
+            var id = DetDocEntrada.DeleteDocEntradaAll(entity);
+            return Ok(id);
         }
     }
 }

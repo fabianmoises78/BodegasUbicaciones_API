@@ -45,16 +45,30 @@ namespace API_BodegasUbicaciones.Controllers
         [Route("CreateUser")]
         public IActionResult CreateUser([FromBody] USUARIOS entity)
         {
-            var Id = UserDAO.create(entity);
-            return Ok(Id);
+            if (entity.USR_EMAIL != null && entity.USR_USRACCESO != null && entity.USR_PASSWORD != null)
+            {
+                var Id = UserDAO.create(entity);
+                return Ok(Id);
+            }
+            else
+            {
+                return BadRequest("Error 404");
+            }
         }
 
         [HttpPost]
         [Route("UpdateUser")]
         public IActionResult UpdateUser([FromBody] USUARIOS entity)
         {
-            var Id = UserDAO.update(entity);
-            return Ok(Id);
+            if (entity.USR_EMAIL != null && entity.USR_USRACCESO != null && entity.USR_PASSWORD != null)
+            {
+                var Id = UserDAO.update(entity);
+                return Ok(Id);
+            }
+            else
+            {
+                return BadRequest("Error 404");
+            }
         }
 
         [HttpPost]
@@ -73,6 +87,7 @@ namespace API_BodegasUbicaciones.Controllers
             return Ok(Id);
         }
 
+        /*
         [HttpPost]
         [Route("DesactivarUser")]
         public IActionResult DesactivarUser([FromBody] USUARIOS entity)
@@ -80,5 +95,6 @@ namespace API_BodegasUbicaciones.Controllers
             var Id = UserDAO.DesactivarUser(entity);
             return Ok(Id);
         }
+        */
     }
 }

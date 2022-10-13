@@ -44,16 +44,30 @@ namespace API_BodegasUbicaciones.Controllers
         [Route("CreateUbicaciones")]
         public IActionResult CreateUbicaciones([FromBody] UBICACIONES entity)
         {
-            var Id = UbiDAO.create(entity);
-            return Ok(Id);
+            if (entity.UBI_CODIGO != null && entity.UBI_NOMBRE != null && entity.UBI_DIRECCION != null)
+            {
+                var Id = UbiDAO.create(entity);
+                return Ok(Id);
+            }
+            else
+            {
+                return BadRequest("Error 404");
+            }
         }
 
         [HttpPost]
         [Route("UpdateUbicaciones")]
         public IActionResult UpdateUbicaciones([FromBody] UBICACIONES entity)
         {
-            var Id = UbiDAO.update(entity);
-            return Ok(Id);
+            if (entity.UBI_CODIGO != null && entity.UBI_NOMBRE != null && entity.UBI_DIRECCION != null)
+            {
+                var Id = UbiDAO.update(entity);
+                return Ok(Id);
+            }
+            else
+            {
+                return BadRequest("Error 404");
+            }
         }
 
         [HttpPost]
@@ -71,7 +85,7 @@ namespace API_BodegasUbicaciones.Controllers
             var Id = UbiDAO.ActivarUbicaciones(entity);
             return Ok(Id);
         }
-
+        /*
         [HttpPost]
         [Route("DesactivarUbicaciones")]
         public IActionResult DesactivarUbicaciones([FromBody] UBICACIONES entity)
@@ -79,5 +93,6 @@ namespace API_BodegasUbicaciones.Controllers
             var Id = UbiDAO.DesactivarUbicaciones(entity);
             return Ok(Id);
         }
+        */
     }
 }

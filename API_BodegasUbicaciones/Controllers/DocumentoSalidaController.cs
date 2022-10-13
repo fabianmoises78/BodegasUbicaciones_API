@@ -55,30 +55,16 @@ namespace API_BodegasUbicaciones.Controllers
         [Route("DocSalida_Del_All")]
         public IActionResult DocSalida_Del_All([FromBody] DOCUMENTOSALIDA entity)
         {
-            if (entity.DCMS_ID != 0)
-            {
-                var id = DocSalidaDAO.DocSalida_Del_All(entity);
-                return Ok(id);
-            }
-            else
-            {
-                return BadRequest("Error 404");
-            }
+            var id = DocSalidaDAO.DocSalida_Del_All(entity);
+            return Ok(id);
         }
 
         [HttpPost]
         [Route("DocSalida_Anular")]
         public IActionResult DocSalida_Anular([FromBody] DOCUMENTOSALIDA entity)
         {
-            if (entity.DCMS_ID != 0)
-            {
-                var id = DocSalidaDAO.DocSalida_Anular(entity);
-                return Ok(id);
-            }
-            else
-            {
-                return BadRequest("Error 404");
-            }
+            var id = DocSalidaDAO.DocSalida_Anular(entity);
+            return Ok(id);
         }
     }
 }

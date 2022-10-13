@@ -45,16 +45,31 @@ namespace API_BodegasUbicaciones.Controllers
         [Route("CreateProveedores")]
         public IActionResult CreateProveedores([FromBody] PROVEEDORES entity)
         {
-            var Id = ProvDAO.create(entity);
-            return Ok(Id);
+            if (entity.PRV_CODIGO != null && entity.PRV_NOMBRE != null && entity.PRV_NIT != null && entity.PRV_NUMCONTACTO != null && entity.PRV_EMAIL != null && entity.PRV_GIRO != null && entity.PRV_DIRECCION != null)
+            {
+                var Id = ProvDAO.create(entity);
+                return Ok(Id);
+            }
+            else
+            {
+                return BadRequest("Error 404");
+            }
+            
         }
 
         [HttpPost]
         [Route("UpdateProveedores")]
         public IActionResult UpdateProveedores([FromBody] PROVEEDORES entity)
         {
-            var Id = ProvDAO.update(entity);
-            return Ok(Id);
+            if (entity.PRV_CODIGO != null && entity.PRV_NOMBRE != null && entity.PRV_NIT != null && entity.PRV_NUMCONTACTO != null && entity.PRV_EMAIL != null && entity.PRV_GIRO != null && entity.PRV_DIRECCION != null)
+            {
+                var Id = ProvDAO.update(entity);
+                return Ok(Id);
+            }
+            else
+            {
+                return BadRequest("Error 404");
+            }
         }
 
         [HttpPost]
