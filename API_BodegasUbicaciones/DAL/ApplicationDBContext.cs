@@ -1,4 +1,5 @@
 ﻿using API_BodegasUbicaciones.BL.Models;
+using API_BodegasUbicaciones.BL.Models.ModelSP;
 using Microsoft.EntityFrameworkCore;
 
 namespace API_BodegasUbicaciones.DAL
@@ -29,5 +30,6 @@ namespace API_BodegasUbicaciones.DAL
         public DbSet<USUARIOS> USUARIOS { get; set; }
 
         //Aqui iran los models de los SP que retornen informacion
+        public DbSet<PRODUCTO_RESULT> PRODUCTO_RESULT { get; set; }
     }
 }

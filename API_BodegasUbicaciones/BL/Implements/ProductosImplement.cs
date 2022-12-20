@@ -1,5 +1,6 @@
 ﻿using API_BodegasUbicaciones.BL.DAO;
 using API_BodegasUbicaciones.BL.Models;
+using API_BodegasUbicaciones.BL.Models.ModelSP;
 using API_BodegasUbicaciones.DAL;
 using API_BodegasUbicaciones.DTO;
 using Microsoft.Extensions.Configuration;
@@ -46,6 +47,47 @@ namespace API_BodegasUbicaciones.BL.Implements
             {
                 return response.Status = 0;
             }
+        }
+
+        public List<PRODUCTO_RESULT> AllGet()
+        {
+            List<PRODUCTO_RESULT> ListPRD = new List<PRODUCTO_RESULT>();
+
+            using (SqlConnection sql = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("PRODUCTOS_lIST", sql))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    sql.Open();
+
+                    using (var prd = cmd.ExecuteReader())
+                    {
+                        if (prd.FieldCount > 0)
+                        {
+                            while (prd.Read())
+                            {
+                                PRODUCTO_RESULT prd_result = new PRODUCTO_RESULT()
+                                {
+                                    PRD_ID = Convert.ToInt32(prd["PRD_ID"]),
+                                    PRD_CODIGO = prd["PRD_CODIGO"].ToString(),
+                                    PRD_NOMBRE = prd["PRD_NOMBRE"].ToString(),
+                                    CTGPRD_ID = Convert.ToInt32(prd["CTGPRD_ID"]),
+                                    CTGPRD_NOMBRE = prd["CTGPRD_NOMBRE"].ToString(),
+                                    MARC_ID = Convert.ToInt32(prd["MARC_ID"]),
+                                    MARC_NOMBRE = prd["MARC_NOMBRE"].ToString(),
+                                    PRD_PRECIOVENTA = Convert.ToDouble(prd["PRD_PRECIOVENTA"]),
+                                    PRD_COSTO = Convert.ToDouble(prd["PRD_COSTO"]),
+                                    PRD_URLIMG = prd["PRD_URLIMG"].ToString(),
+                                    PRD_PRCGANC = Convert.ToDouble(prd["PRD_PRCGANC"]),
+                                    PRD_ACTIVO = Convert.ToBoolean(prd["PRD_ACTIVO"])
+                                };
+                                ListPRD.Add(prd_result);
+                            }
+                        }
+                    }
+                }
+            }
+            return ListPRD;
         }
 
         public List<PRODUCTOS> Buscar(string data)

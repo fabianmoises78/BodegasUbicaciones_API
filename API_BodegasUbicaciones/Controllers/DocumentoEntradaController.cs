@@ -24,7 +24,7 @@ namespace API_BodegasUbicaciones.Controllers
             }
             else
             {
-                return BadRequest("Error 404");
+                return BadRequest("Error 505");
             }
         }
 

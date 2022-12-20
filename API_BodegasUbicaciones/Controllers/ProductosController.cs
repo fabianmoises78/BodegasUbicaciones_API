@@ -21,7 +21,7 @@ namespace API_BodegasUbicaciones.Controllers
         [Route("GetListProductos")]
         public IActionResult GetListProductos()
         {
-            var ListProductos = ProdDAO.GetAll();
+            var ListProductos = ProdDAO.AllGet();
             return Ok(ListProductos);
         }
 
