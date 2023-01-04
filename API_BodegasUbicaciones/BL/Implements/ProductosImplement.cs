@@ -38,6 +38,7 @@ namespace API_BodegasUbicaciones.BL.Implements
                         SqlParameter p2 = cmd.Parameters.Add(new SqlParameter("@PRD_ACTIVO", entity.PRD_ACTIVO));
                         sql.Open();
                         cmd.ExecuteReader();
+                        sql.Dispose();
                         sql.Close();
                     }
                 }
@@ -85,6 +86,8 @@ namespace API_BodegasUbicaciones.BL.Implements
                             }
                         }
                     }
+                    sql.Close();
+                    sql.Dispose();
                 }
             }
             return ListPRD;
@@ -116,6 +119,7 @@ namespace API_BodegasUbicaciones.BL.Implements
                         sql.Open();
                         cmd.ExecuteReader();
                         sql.Close();
+                        sql.Dispose();
                     }
                 }
                 return response.Status = 1;
@@ -140,6 +144,7 @@ namespace API_BodegasUbicaciones.BL.Implements
                         SqlParameter p1 = cmd.Parameters.Add(new SqlParameter("@PRD_ID", entity.PRD_ID));
                         sql.Open();
                         cmd.ExecuteReader();
+                        sql.Dispose();
                         sql.Close();
                     }
                 }
@@ -187,6 +192,7 @@ namespace API_BodegasUbicaciones.BL.Implements
                         SqlParameter p8 = cmd.Parameters.Add(new SqlParameter("@PRD_PRCGANC", entity.PRD_PRCGANC));
                         sql.Open();
                         cmd.ExecuteReader();
+                        sql.Dispose();
                         sql.Close();
                     }
                 }
