@@ -340,3 +340,8 @@ C:\Users\moise\Documents\API_BodegasUbicaciones\BodegasUbicaciones_API\API_Bodeg
 C:\Users\moise\Documents\API_BodegasUbicaciones\BodegasUbicaciones_API\API_BodegasUbicaciones\obj\Debug\netcoreapp3.1\API_BodegasUbicaciones.dll
 C:\Users\moise\Documents\API_BodegasUbicaciones\BodegasUbicaciones_API\API_BodegasUbicaciones\obj\Debug\netcoreapp3.1\API_BodegasUbicaciones.pdb
 C:\Users\moise\Documents\API_BodegasUbicaciones\BodegasUbicaciones_API\API_BodegasUbicaciones\obj\Debug\netcoreapp3.1\API_BodegasUbicaciones.genruntimeconfig.cache
+C:\Users\moise\Documents\API_BodegasUbicaciones\BodegasUbicaciones_API\API_BodegasUbicaciones\obj\Debug\netcoreapp3.1\staticwebassets\API_BodegasUbicaciones.StaticWebAssets.Pack.cache
+C:\Users\moise\Documents\API_BodegasUbicaciones\BodegasUbicaciones_API\API_BodegasUbicaciones\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.API_BodegasUbicaciones.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\moise\Documents\API_BodegasUbicaciones\BodegasUbicaciones_API\API_BodegasUbicaciones\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.build.API_BodegasUbicaciones.props
+C:\Users\moise\Documents\API_BodegasUbicaciones\BodegasUbicaciones_API\API_BodegasUbicaciones\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.buildMultiTargeting.API_BodegasUbicaciones.props
+C:\Users\moise\Documents\API_BodegasUbicaciones\BodegasUbicaciones_API\API_BodegasUbicaciones\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.buildTransitive.API_BodegasUbicaciones.props

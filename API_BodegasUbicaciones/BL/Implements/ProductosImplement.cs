@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Security.Cryptography.X509Certificates;
 
 namespace API_BodegasUbicaciones.BL.Implements
 {
@@ -15,6 +16,8 @@ namespace API_BodegasUbicaciones.BL.Implements
         private readonly ApplicationDBContext context;
         private readonly IConfiguration configuration;
         private readonly string _connectionString;
+
+        public int result = 0;
 
         public ProductosImplement(ApplicationDBContext context, IConfiguration IConfig)
         {
@@ -40,6 +43,7 @@ namespace API_BodegasUbicaciones.BL.Implements
                         cmd.ExecuteReader();
                         sql.Dispose();
                         sql.Close();
+                        cmd.Dispose();
                     }
                 }
                 return response.Status = 1;
@@ -88,6 +92,7 @@ namespace API_BodegasUbicaciones.BL.Implements
                     }
                     sql.Close();
                     sql.Dispose();
+                    cmd.Dispose();
                 }
             }
             return ListPRD;
@@ -117,9 +122,10 @@ namespace API_BodegasUbicaciones.BL.Implements
                         SqlParameter p6 = cmd.Parameters.Add(new SqlParameter("@PRD_URLIMG", entity.PRD_URLIMG));
                         SqlParameter p7 = cmd.Parameters.Add(new SqlParameter("@PRD_PRCGANC", entity.PRD_PRCGANC));
                         sql.Open();
-                        cmd.ExecuteReader();
+                        cmd.ExecuteScalar();
                         sql.Close();
                         sql.Dispose();
+                        cmd.Dispose();
                     }
                 }
                 return response.Status = 1;
